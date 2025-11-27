@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ASP_PV411.Models.Home;
+using ASP_PV411.Services.Random;
+using ASP_PV411.Services.Timestamp;
 using ASP_PV411.Models;
 
 namespace ASP_PV411.Controllers;
@@ -8,15 +10,31 @@ namespace ASP_PV411.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IRandomService _randomService;
+    private readonly ITimestampService _timestampService;
 
-    public HomeController(ILogger<HomeController> logger)
+
+    public HomeController(ILogger<HomeController> logger, IRandomService randomService, ITimestampService timestampService)
     {
         _logger = logger;
+        _randomService = randomService;
+        _timestampService = timestampService;
     }
 
     public IActionResult Index()
     {
         return View();
+    }
+
+    public IActionResult IoC()
+    {
+        HomeIocViewModel model = new ()
+        {
+            RandomValue = _randomService.RandomInt(),
+            RandomServiceHashCode = _randomService.GetHashCode()
+        };
+        ViewData["ctrl"] = _timestampService.Timestamp();
+        return View(model);
     }
 
     public IActionResult Intro()

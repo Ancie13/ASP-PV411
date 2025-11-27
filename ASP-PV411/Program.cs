@@ -1,3 +1,6 @@
+using ASP_PV411.Services.Random;
+using ASP_PV411.Services.Timestamp;
+
 namespace ASP_PV411
 {
     public class Program
@@ -8,6 +11,8 @@ namespace ASP_PV411
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddRandom();
+            builder.Services.AddTimestamp();
 
             var app = builder.Build();
 
