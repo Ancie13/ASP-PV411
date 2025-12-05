@@ -1,4 +1,10 @@
+using ASP_PV411.Services.Hash;
+using ASP_PV411.Services.Kdf;
+using ASP_PV411.Services.OTP;
 using ASP_PV411.Services.Random;
+using ASP_PV411.Services.Rfn;
+using ASP_PV411.Services.Salt;
+using ASP_PV411.Services.Signature;
 using ASP_PV411.Services.Timestamp;
 
 namespace ASP_PV411
@@ -13,6 +19,12 @@ namespace ASP_PV411
             builder.Services.AddControllersWithViews();
             builder.Services.AddRandom();
             builder.Services.AddTimestamp();
+            builder.Services.AddHash();
+            builder.Services.AddSalt();
+            builder.Services.AddKdf();
+            builder.Services.AddSignature();
+            builder.Services.AddOtp();
+            builder.Services.AddRfn();
 
             var app = builder.Build();
 

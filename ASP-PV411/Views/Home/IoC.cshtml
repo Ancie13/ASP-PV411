@@ -15,7 +15,19 @@
 
 <h3>хеш-код сервісу у Razor: @randomService.GetHashCode()</h3>
 <br />
+@ViewData["rfn"]
+<br/>
+@ViewData["otp"]
+<br/>
 @ViewData["ctrl"]
+<br/>
+@ViewData["sign"]
+<br/>
+@ViewData["dk"]
+<br/>
+@ViewData["salt"]
+<br/>
+@ViewData["hash"]
 <p>
     <b>Інверсія управління</b> (IoC - Inversion of control) - архітектурний шаблон
     згідно з яким управління (контроль за) життєвим циклом об'єктів перекладається 
